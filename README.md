@@ -3,6 +3,7 @@
 # 1. Requirements or setup list:
 1. Install Netbeans
 2. Install PostgreSQL
+   * http://www.indjango.com/ubuntu-install-postgresql-and-pgadmin/
 3. Install pgAdmin
 4. clone the project
 

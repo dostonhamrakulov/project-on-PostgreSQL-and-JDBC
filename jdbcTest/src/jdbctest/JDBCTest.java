@@ -25,7 +25,7 @@ public class JDBCTest
     public static final int PORT = 5432;
     public static final String DATABASENAME = "Datenbanken";
     public static final String USERNAME = "postgres";
-    public static final String PASSWORD = "1777537200";
+    public static final String PASSWORD = "28786188";
     public static final String TABLENAME = "pizzen";
 
     public static void main(String[] args)
