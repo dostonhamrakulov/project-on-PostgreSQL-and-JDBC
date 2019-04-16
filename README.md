@@ -9,6 +9,8 @@
 
 # 2. Project setup
 1. Create empty Java project in Netbeans
+2. Import "jdbcTest" project (which you cloned) into new Project (which you have created)
+3. 
 
 ### Description:
 Working with different libraries in Python.
@@ -17,7 +19,10 @@ Working with different libraries in Python.
 
 1. Connection to PostgreSQL
 2. JDBC statements
-3. 
+3. Update PostgreSQL hostname, port, Databasename ect.
+	* Open pgAdmin
+	* Create Database with table or import Datenbanken.sql into pgAdmin
+	* Run SQL statement to create DB and table
 
 
 ### Programming languages and frameworks
