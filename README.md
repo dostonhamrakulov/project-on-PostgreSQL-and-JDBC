@@ -20,9 +20,12 @@ Working with different libraries in Python.
 1. Connection to PostgreSQL
 2. JDBC statements
 3. Update PostgreSQL hostname, port, Databasename ect.
-	* Open pgAdmin
-	* Create Database with table or import Datenbanken.sql into pgAdmin
-	* Run SQL statement to create DB and table
+   * Open pgAdmin
+   * Create Database with table or import Datenbanken.sql into pgAdmin
+   * Run SQL statement to create DB and table
+   * Find hostname, port, username under Database's Properties
+   * Update hostname, port, ect in .java file
+4. Run the project and see the result.
 
 
 ### Programming languages and frameworks
