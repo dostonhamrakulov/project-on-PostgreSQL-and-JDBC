@@ -29,13 +29,13 @@ Working with different libraries in Python.
 
 
 ### Programming languages and frameworks
-```[Python, Django]
-Python, Django
+```[Java, PostgeSQL]
+Java, PostgreSQL
 ```
 
 ### IDE
-```[Pycharm, Vim]
-PyCharm, Vim
+```[Netbeans, pgAdmin]
+Netbeans, pgAdmin
 ```
 
 ## Author
