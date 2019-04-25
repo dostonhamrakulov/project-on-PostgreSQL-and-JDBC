@@ -1,0 +1,24 @@
+// Apply the needed plugins
+plugins {
+    id 'war'
+    id 'org.gretty' version '2.3.1'
+}
+
+// In this section you declare where to find the dependencies of your project
+repositories {
+    // Use jcenter for resolving your dependencies.
+    // You can declare any Maven/Ivy/file repository here.
+    jcenter()
+}
+
+gretty {
+    // Avoid the log directory to be created in the home directory.
+    logDir = "{buildDir}/logs/"
+    // Use Apache Tomcat 9 Server as default servlet container.
+    servletContainer = 'tomcat9'
+}
+
+wrapper {
+    // Gradle version to use.
+    gradleVersion = '5.4'
+}
