@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dbw:Pizzen xsi:schemaLocation="http://www.tu-chemnitz.de/informatik/DVS/DBW pizzenSchema.xsd" xmlns:dbw="http://www.tu-chemnitz.de/informatik/DVS/DBW" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Pizza pizzaId="1" pizzaName="Pizza Salami Supreme, Classic" pizzaSize="25 cm" basePrice="4.7"/>
+	<Pizza pizzaId="2" pizzaName="Pizza Tuna, Classic" pizzaSize="25 cm" basePrice="4.95"/>
+	<Pizza pizzaId="3" pizzaName="Pizza Athena, Classic" pizzaSize="25 cm" basePrice="4.95"/>
+	<Pizza pizzaId="4" pizzaName="Pizza Gruener Garten, Classic" pizzaSize="25 cm" basePrice="5.4"/>
+	<Pizza pizzaId="5" pizzaName="Pizza Italia, Classic" pizzaSize="25 cm" basePrice="5.8"/>
+	<Pizza pizzaId="6" pizzaName="Pizza Lucca, Classic" pizzaSize="25 cm" basePrice="5.8"/>
+	<Pizza pizzaId="7" pizzaName="Pizza Mediterrana, Classic" pizzaSize="25 cm" basePrice="6.95"/>
+	<Pizza pizzaId="8" pizzaName="Pizza Bombay, Classic" pizzaSize="25 cm" basePrice="5.8"/>
+	<Pizza pizzaId="9" pizzaName="Pizza Dutchman, Classic" pizzaSize="25 cm" basePrice="5.8"/>
+	<Pizza pizzaId="10" pizzaName="Pizza Olymp, Classic" pizzaSize="25 cm" basePrice="6.65"/>
+	<Pizza pizzaId="11" pizzaName="Pizza Azzurri, Classic" pizzaSize="25 cm" basePrice="6.65"/>
+</dbw:Pizzen>
