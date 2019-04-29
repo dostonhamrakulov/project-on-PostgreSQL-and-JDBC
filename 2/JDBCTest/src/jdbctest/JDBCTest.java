@@ -47,10 +47,19 @@ public class JDBCTest
             ResultSet result = statement.executeQuery("SELECT * FROM " + JDBCTest.TABLENAME);
 
             // Read and print results
+//            while (result.next())
+//            {
+//                for (int i = 1; i <= result.getMetaData().getColumnCount(); i++)
+//                    System.out.println(result.getMetaData().getColumnLabel(i) + ": " + result.getString(i) + ";");
+//                System.out.println();
+//            }
+            
             while (result.next())
             {
-                for (int i = 1; i <= result.getMetaData().getColumnCount(); i++)
-                    System.out.println(result.getMetaData().getColumnLabel(i) + ": " + result.getString(i) + ";");
+//                for (int i = 1; i <= result.getMetaData().getColumnCount(); i++){
+                    System.out.println(result.getString("pizzaId"));
+//                }
+//                    System.out.println(result.getMetaData().getColumnLabel(i) + ": " + result.getString(i) + ";");
                 System.out.println();
             }
 

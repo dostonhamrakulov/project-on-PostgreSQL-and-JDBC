@@ -11,6 +11,11 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  * Liste der Pizza fuer den Pizza Services Die Pizza werden aus einer Properties
@@ -25,6 +30,15 @@ public class PizzaList
 {
 
     private final TreeMap<Long, Pizza> pizzas;
+    
+    public static final String HOST = "localhost";
+    public static final int PORT = 5432;
+    public static final String DATABASENAME = "Datenbanken";
+    public static final String USERNAME = "postgres";
+    public static final String PASSWORD = "1777537200";
+    public static final String TABLENAME = "pizzen";
+    
+    
 
     /**
      * Leere Liste von Pizzen
@@ -85,8 +99,36 @@ public class PizzaList
     {
         try
         {
-            // Load postgres driver..
+            
+            
+            // Load postgreSQL driver
             Class.forName("org.postgresql.Driver");
+
+            String connectionUrl = "jdbc:postgresql://" + PizzaList.HOST + ":" + PizzaList.PORT + "/" + PizzaList.DATABASENAME;
+
+            // 1. Establish connection
+            Connection connection = DriverManager.getConnection(connectionUrl, PizzaList.USERNAME, PizzaList.PASSWORD);
+
+            // 2. Create statement
+            Statement statement = connection.createStatement();
+
+            // 3. Execute statement
+            ResultSet result = statement.executeQuery("SELECT * FROM " + PizzaList.TABLENAME);
+
+            // Read and print results
+            while (result.next())
+            {
+//                for (int i = 1; i <= result.getMetaData().getColumnCount(); i++){
+                    pizzas.put(new Long(0), new Pizza(Long.valueOf(result.getString("pizzaId")), result.getString("pizzaName"), result.getString("pizzaSize"), 
+                            Double.valueOf(result.getString("basePrice"))));
+//                }
+//                    System.out.println(result.getMetaData().getColumnLabel(i) + ": " + result.getString(i) + ";");
+//                System.out.println();
+            }
+
+            
+            // Load postgres driver..
+//            Class.forName("org.postgresql.Driver");
 
             /**
              * Import pizza.sql into your postgreSQL Database. You can use \i
@@ -97,13 +139,24 @@ public class PizzaList
              *
              * use: pizzas.put(pizzaId, pizza); to add a pizza to result set
              */
-            pizzas.put(new Long(0), new Pizza(0, "Please implement me. I am static and want to be in the database....", "0.0 mmm", 10000));
+            
             //throw new SQLException("Please implement me");
+            
+            // 4. Free ressources 
+            result.close();
+            statement.close();
+            connection.close();
         }
         catch (java.lang.ClassNotFoundException e)
         {
             // Exception abfangen, falls Treiber nicht gefunden werden kann
             System.out.println("Did not find JDBC driver. Please Add it to your lib");
+        }
+        catch (SQLException e)
+        {
+            // Catch SQL Errors
+            System.out.println("Error while talking to database");
+            System.out.println(e.getMessage());
         }
 
     }

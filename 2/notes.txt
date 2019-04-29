@@ -1,0 +1,10 @@
+
+
+Error in PersonalPizza:
+	- pizzaId
+	- after filling form
+
+Questions:
+	-Did i connect PostgreSQL?
+	- How to restore Session in the oder.jsp 
+	- confirm.jsp -> line 60 -> PersonalPizza.java -> line 38 (Constructor -> HTTP session)

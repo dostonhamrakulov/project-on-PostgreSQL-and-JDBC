@@ -53,6 +53,8 @@ public final class PersonalPizza extends Pizza
 
         Pizza pizza = pizzaList.getPizza(new Long(pizzaId.trim()));
 
+        
+        System.out.println(pizza);
         this.setPizza(pizza);
         System.out.println(pizza);
         StringTokenizer st = new StringTokenizer(ingredientIds, ",");
