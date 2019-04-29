@@ -21,12 +21,12 @@ public class JDBCTest
     /**
      * Enter your Data here (Can be like exercise 1)
      */
-    public static final String HOST = "your_server";
-    public static final int PORT = 0000;
-    public static final String DATABASENAME = "your_database_name";
-    public static final String USERNAME = "your_username";
-    public static final String PASSWORD = "your_password";
-    public static final String TABLENAME = "your_table";
+    public static final String HOST = "localhost";
+    public static final int PORT = 5432;
+    public static final String DATABASENAME = "Datenbanken";
+    public static final String USERNAME = "postgres";
+    public static final String PASSWORD = "1777537200";
+    public static final String TABLENAME = "pizzen";
 
     public static void main(String[] args)
     {
