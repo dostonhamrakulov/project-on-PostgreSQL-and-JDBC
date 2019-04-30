@@ -104,7 +104,8 @@ public class PizzaList
             // Load postgreSQL driver
             Class.forName("org.postgresql.Driver");
 
-            String connectionUrl = "jdbc:postgresql://" + PizzaList.HOST + ":" + PizzaList.PORT + "/" + PizzaList.DATABASENAME;
+            String connectionUrl = "jdbc:postgresql://" + PizzaList.HOST + ":" 
+                    + PizzaList.PORT + "/" + PizzaList.DATABASENAME;
 
             // 1. Establish connection
             Connection connection = DriverManager.getConnection(connectionUrl, PizzaList.USERNAME, PizzaList.PASSWORD);
@@ -119,8 +120,11 @@ public class PizzaList
             while (result.next())
             {
 //                for (int i = 1; i <= result.getMetaData().getColumnCount(); i++){
-                    pizzas.put(new Long(0), new Pizza(Long.valueOf(result.getString("pizzaId")), result.getString("pizzaName"), result.getString("pizzaSize"), 
-                            Double.valueOf(result.getString("basePrice"))));
+                  pizzas.put(result.getLong("pizzaId"),
+                          new Pizza(result.getLong("pizzaId"), result.getString("pizzaName"), result.getString("pizzaSize"), 
+                          result.getDouble("basePrice")));
+//                    pizzas.put(new Long(0), new Pizza(Long.valueOf(result.getString("pizzaId")), result.getString("pizzaName"), result.getString("pizzaSize"), 
+//                            Double.valueOf(result.getString("basePrice"))));
 //                }
 //                    System.out.println(result.getMetaData().getColumnLabel(i) + ": " + result.getString(i) + ";");
 //                System.out.println();
