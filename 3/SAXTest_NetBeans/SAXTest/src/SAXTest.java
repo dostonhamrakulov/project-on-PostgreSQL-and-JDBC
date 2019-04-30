@@ -63,6 +63,11 @@ public class SAXTest
         {
             //@TODO: Read pizza data and print it to out stream
             System.out.println(qName + " encountered");
+            
+            for(int i = 0; i < attributes.getLength(); i++){
+                System.out.println(attributes.getLocalName(i) + " : " + attributes.getValue(i));
+            }
+            System.out.println("4" + attributes.getValue("pizzaId"));
         }
 
     }
