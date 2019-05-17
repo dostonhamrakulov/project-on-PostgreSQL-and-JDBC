@@ -11,6 +11,12 @@ import java.io.*;
 import java.util.*;
 
 import javax.servlet.ServletContext;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+import org.xml.sax.Attributes;
+import org.xml.sax.SAXException;
+import org.xml.sax.helpers.DefaultHandler;
 
 /**
  * Liste der Pizza fuer den Pizza Services Die Pizza werden aus einer Properties
@@ -105,7 +111,26 @@ public class PizzaList
          * Add a pizza to result set:
          * pizzas.put(pizzaId, pizza);
          */
-        pizzas.put(0L, new Pizza(0, "Please implement me. I am static and want to be in the XML file...", "1.2 cm", 34567.89));
+        try
+        {
+            // Parse the XML file by using the default (non-validating) parser
+//            Pizza pizza = new Pizza();
+            SAXParserFactory.newInstance().newSAXParser().parse(in, new PizzaHandler());
+            
+            
+//            SAXParserFactory factory = SAXParserFactory.newInstance();
+//            SAXParser saxParser = factory.newSAXParser();
+//            MyHandler myhandler = new MyHandler();
+//            saxParser.parse(in, myhandler);
+//            pizzas = myhandler.getPizzas();
+//            pizzas.put(0L, new Pizza(0, "Please implement me. I am static and want to be in the XML file...", "1.2 cm", 34567.89));
+            
+        }
+        catch (ParserConfigurationException | SAXException | IOException e)
+        {
+            e.printStackTrace();
+        }
+        
     }
 
     /**
@@ -134,5 +159,42 @@ public class PizzaList
         outStr.append("]");
         return outStr.toString();
     }
+    
+    
+    private class PizzaHandler extends DefaultHandler
+    {
+
+        @Override
+        public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException
+        {
+            //@TODO: Read pizza data and print it to out stream
+            System.out.println(qName + " encountered");
+            final Pizza pizza = new Pizza();
+            
+            for(int i = 0; i < attributes.getLength(); i++){
+//                pizza = 
+                qName = attributes.getLocalName(i);
+                long pizza_id = 0L;
+                if (qName.equalsIgnoreCase("pizzaId")) {
+                    pizza.setId(new Integer(attributes.getValue(i)));
+//                    pizza_id.valueof(attributes.getValue(i));
+                    pizza_id = Long.valueOf(attributes.getValue(i));
+                 } else if (qName.equalsIgnoreCase("pizzaName")) {
+                    pizza.setName(attributes.getValue(i));
+                 } else if (qName.equalsIgnoreCase("pizzaSize")) {
+                    pizza.setSize(attributes.getValue(i));
+                 } else if (qName.equalsIgnoreCase("basePrice")) {
+                    pizza.setBasePrice(new Double(attributes.getValue(i)));
+                 }
+                System.out.println(attributes.getLocalName(i) + " : " + attributes.getValue(i));
+                pizzas.put(pizza_id, pizza);
+                
+            }
+//            System.out.println("4" + attributes.getValue("pizzaId"));
+        }
+
+    }
 
 }
+
+
