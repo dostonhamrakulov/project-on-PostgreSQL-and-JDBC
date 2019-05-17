@@ -23,7 +23,8 @@ public class DOMTest
         // usage of our created DOM parsed from the XML (that is THIS class)
         DOMTest domTest = new DOMTest();
         // Parse Pizza-XML
-        domTest.parseXMLList(domTest.getClass().getClassLoader().getResourceAsStream("pizzenExample.xml"));
+        domTest.parseXMLList(domTest.getClass().getClassLoader().getResourceAsStream(
+                "pizzenExample.xml"));
     }
 
     /**
@@ -44,7 +45,29 @@ public class DOMTest
             // iterate over a NodeList) and print out their data (attributes).
             // Be aware, that we return not only Pizzas but also other Nodes
             // (which may not be too obvisious at the beginning).
-            System.out.println("Implement Code to output XML file using DOM parser");
+            
+            document.getDocumentElement().normalize();
+            
+            System.out.println("Root element :" + document.getDocumentElement().getNodeName());
+			
+            NodeList nList = document.getElementsByTagName("Pizza");
+            
+            System.out.println("----------------------------");
+
+            for (int temp = 0; temp < nList.getLength(); temp++) {
+
+                Node nNode = nList.item(temp);
+                System.out.println("\nCurrent Element :" + nNode.getNodeName());
+
+                if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+
+                    Element eElement = (Element) nNode;
+                    System.out.println("Staff id : " + eElement.getAttribute("pizzaId"));
+                    System.out.println("Staff Name : " + eElement.getAttribute("pizzaName"));
+                    System.out.println("Staff Size : " + eElement.getAttribute("pizzaSize"));
+                    System.out.println("Staff Price : " + eElement.getAttribute("basePrice"));
+                }
+            }   
         }
         catch (ParserConfigurationException | SAXException | IOException e)
         {
